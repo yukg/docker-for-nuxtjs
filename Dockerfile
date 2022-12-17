@@ -1,7 +1,8 @@
-FROM node:16.18.1-alpine
-
+FROM node:16.18.1
 WORKDIR /app
 COPY ../app /app
 
-RUN apk update \
-    && apk add git
+RUN apt update && apt install -y \
+    git \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/*
